@@ -13,6 +13,13 @@ namespace Fiap.Web.Alunos.Data.Contexts
         {
         }
 
+        public DbSet<Especie> Especies { get; set; }
+        public DbSet<Canteiro> Canteiros { get; set; }
+        public DbSet<SensorUmidade> SensoresUmidade { get; set; }
+        public DbSet<Irrigacao> Irrigacoes { get; set; }
+        public DbSet<Doacao> Doacoes { get; set; }
+        public DbSet<Colheita> Colheitas { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 

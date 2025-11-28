@@ -1,9 +1,15 @@
 ﻿#region IMPORTAÇÃO REFERENTE AO BANCO DE DADOS
 using Fiap.Web.Alunos.Data.Contexts;
+using FiapWebAluno.Service.Implementations;
+using FiapWebAluno.Service.Interface;
 using Microsoft.EntityFrameworkCore;
 #endregion
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddScoped<IEspecieService, EspecieService>();
+builder.Services.AddScoped<ICanteiroService, CanteiroService>();
+builder.Services.AddScoped<IIrrigacaoService, IrrigacaoService>();
+builder.Services.AddScoped<ISensorService, SensorService>();
 
 
 var connectionString = builder.Configuration.GetConnectionString("DatabaseConnection");
@@ -18,6 +24,8 @@ builder.Services.AddDbContext<DatabaseContext>(opt =>
         opt.EnableSensitiveDataLogging(true);
     }
 });
+
+builder.Services.AddScoped<ICanteiroService, CanteiroService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
